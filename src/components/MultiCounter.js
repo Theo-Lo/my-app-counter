@@ -14,11 +14,11 @@ class MultiCounter extends Component {
         this.setState({ size: event.target.value });
     };
     render() {
-        const size = 3;
+        const size = this.state.size;
         return (
             <div>
-                <input type="number" value={this.state.size} onChange={this.onChange} />
-                <CounterGroup size={this.state.size} />
+                <input type="number" value={size} onChange={this.onChange} />
+                <CounterGroup size={size} />
             </div>
         );
     }
