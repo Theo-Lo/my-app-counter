@@ -1,5 +1,5 @@
 import React from "react";
-import CounterGroup from "./components/CounterGroup.js";
+import MultiCounter from "./components/MultiCounter";
 import './App.css';
 
 function App() {
@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <CounterGroup size={size}/>
+        <MultiCounter />
       </header>
     </div>
   );

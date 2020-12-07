@@ -3,7 +3,8 @@ import Counter from "./Counter"
 
 class CounterGroup extends Component {
     initArraySize = (size) => {
-        return Array.from(Array(size).keys());
+        const number = size.length > 0 ? parseInt(size) : 0;
+        return Array.from(Array(number).keys());
     };
 
     render() {
@@ -12,11 +13,9 @@ class CounterGroup extends Component {
 
         return (
             <div>
-                {
-                    initArraySize.map((value) =>
-                        <Counter key={value} />
-                    )
-                }
+                {initArraySize.map((value) =>
+                    <Counter key={value} />
+                )}
             </div>
         );
     }
