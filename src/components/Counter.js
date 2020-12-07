@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 export default class Counter extends Component {
-    constructor(props) {
+    constructor(props, ref) {
         super(props)
 
         this.state = {
@@ -9,12 +9,18 @@ export default class Counter extends Component {
         };
     }
 
+    resetCounter() {
+        this.setState({ number: 0 });
+    }
+
     onIncrease = () => {
         this.setState((prevState) => ({ number: prevState.number + 1 }));
+        this.props.valueChange(1);
     }
 
     onDecrease = () => {
         this.setState((prevState) => ({ number: prevState.number - 1 }));
+        this.props.valueChange(-1);
     }
 
     render() {
