@@ -10,10 +10,9 @@ class CounterGroup extends Component {
         };
     }
 
-    resetCounter() {
-        this.setState({ sum: 0 });
-        for (var i = 0; i < this.props.size; i++) {
-            this.refs[`counter${i}`].resetCounter();
+    componentDidUpdate(prevProps) {
+        if (prevProps.size !== this.props.size) {
+            this.setState({ sum: 0 });
         }
     }
 
@@ -22,9 +21,13 @@ class CounterGroup extends Component {
         return Array.from(Array(number).keys());
     };
 
+
     calculateSum = (valueChange) => {
-        this.setState((prevState) => ({ sum: prevState.sum + valueChange }));
-        this.props.sum(this.state.sum + valueChange);
+        this.setState(
+            prevState => (
+                { sum: prevState.sum + valueChange }),
+            () => this.props.setSum(this.state.sum)
+        );
     }
 
     render() {
@@ -33,8 +36,8 @@ class CounterGroup extends Component {
 
         return (
             <div>
-                {initArraySize.map((value, index) =>
-                    <Counter ref={`counter${index}`} key={value} valueChange={this.calculateSum} />
+                {initArraySize.map((value) =>
+                    <Counter size={size} key={value} calculateSum={this.calculateSum} />
                 )}
             </div>
         );

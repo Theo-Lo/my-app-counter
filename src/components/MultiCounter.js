@@ -14,23 +14,23 @@ class MultiCounter extends Component {
     }
 
     updateCounterSize = (size) => {
-        this.setState({ size: size });
-        this.setState({ sum: 0 });
-        this.refs.counterGroup.resetCounter();
+        this.setState({
+            size: size,
+            sum: 0
+        });
     }
 
     setSum = (sum) => {
         this.setState(({ sum: sum }));
     }
 
-
     render() {
         const size = this.state.size;
         return (
             <div>
-                <CounterSizeGenerator size={this.updateCounterSize} />
+                <CounterSizeGenerator updateCounterSize={this.updateCounterSize} />
                 <CounterGroupSum sum={this.state.sum} />
-                <CounterGroup ref="counterGroup" size={size} sum={this.setSum} />
+                <CounterGroup size={size} setSum={this.setSum} />
             </div>
         );
     }

@@ -9,18 +9,26 @@ export default class Counter extends Component {
         };
     }
 
-    resetCounter() {
-        this.setState({ number: 0 });
+    componentDidUpdate(prevProps) {
+        if (prevProps.size !== this.props.size) {
+            this.setState({ number: 0 });
+        }
     }
 
     onIncrease = () => {
-        this.setState((prevState) => ({ number: prevState.number + 1 }));
-        this.props.valueChange(1);
+        this.setState(
+            prevState => (
+                { number: prevState.number + 1 }),
+            () => this.props.calculateSum(1)
+        );
     }
 
     onDecrease = () => {
-        this.setState((prevState) => ({ number: prevState.number - 1 }));
-        this.props.valueChange(-1);
+        this.setState(
+            prevState => (
+                { number: prevState.number - 1 }),
+            () => this.props.calculateSum(-1)
+        );
     }
 
     render() {
