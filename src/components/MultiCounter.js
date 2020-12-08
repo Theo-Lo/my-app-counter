@@ -7,7 +7,7 @@ class MultiCounter extends Component {
     render() {
         return (
             <div>
-                <CounterSizeGeneratorContainer/>
+                <CounterSizeGeneratorContainer />
                 <CounterGroupSumContainer />
                 <CounterGroupContainer />
             </div>

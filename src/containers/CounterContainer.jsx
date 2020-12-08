@@ -1,5 +1,5 @@
-import {connect} from "react-redux";
-import {increaseSum, decreaseSum} from "../actions"
+import { connect } from "react-redux";
+import { increaseSum, decreaseSum } from "../actions"
 import Counter from "../components/Counter";
 
 const mapDispatchToProps = dispatch => ({
