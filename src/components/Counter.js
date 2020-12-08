@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 export default class Counter extends Component {
-    constructor(props, ref) {
+    constructor(props) {
         super(props)
 
         this.state = {
@@ -9,17 +9,11 @@ export default class Counter extends Component {
         };
     }
 
-    componentDidUpdate(prevProps) {
-        if (prevProps.size !== this.props.size) {
-            this.setState({ number: 0 });
-        }
-    }
-
     onIncrease = () => {
         this.setState(
             prevState => (
                 { number: prevState.number + 1 }),
-            () => this.props.calculateSum(1)
+            () => this.props.increase()
         );
     }
 
@@ -27,7 +21,7 @@ export default class Counter extends Component {
         this.setState(
             prevState => (
                 { number: prevState.number - 1 }),
-            () => this.props.calculateSum(-1)
+            () => this.props.decrease()
         );
     }
 
