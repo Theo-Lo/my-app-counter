@@ -11,6 +11,7 @@ class CounterGroup extends Component {
     }
 
     resetCounter() {
+        this.setState({ sum: 0 });
         for (var i = 0; i < this.props.size; i++) {
             this.refs[`counter${i}`].resetCounter();
         }
